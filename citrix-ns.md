@@ -1,3 +1,6 @@
+See [https://dozer.nz/citrix-decrypt/](https://dozer.nz/citrix-decrypt/)
+
+
 ## Netscaler
 
 Netscaler has a hardcoded RC4 encryption key used to encrypt cleartext passwords stored in the config, such as for LDAP. The static encryption key exists in the libnscli90.so library, and as of 10.5 is `2286da6ca015bcd9b7259753c2a5fbc2`.
