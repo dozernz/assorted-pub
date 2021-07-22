@@ -2,6 +2,19 @@
 
 Things I do all the time but can never remember.
 
+## curl flags
+
+Dont resovlve paths, for path traversal e.g. `GET /a/../ HTTP/1.1`
+```
+curl --path-as-is http://localhost/a/../
+```
+
+Control the reqeuest URI for doing things like submitting a full URL e.g. `GET http://target/a HTTP/1.1`
+```
+curl --request-target "http://target/a" http://localhost
+```
+
+
 ## gnu parallel-ing gooder
 
 ```
