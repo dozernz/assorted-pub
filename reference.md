@@ -2,6 +2,12 @@
 
 Things I do all the time but can never remember.
 
+## Reset Microsoft Defender Application Guard Edge browser instance
+
+```
+wdagtool.exe cleanup
+```
+
 ## curl flags
 
 Dont resovlve paths, for path traversal e.g. `GET /a/../ HTTP/1.1`
