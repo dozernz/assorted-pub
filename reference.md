@@ -20,6 +20,12 @@ Control the reqeuest URI for doing things like submitting a full URL e.g. `GET h
 curl --request-target "http://target/a" http://localhost
 ```
 
+Pin a hostname to an IP address, mostly useful for when you want to send a specific SNI:
+
+```
+curl https://www.example.com --resolve www.example.com:443:127.0.0.1
+```
+
 
 ## gnu parallel-ing gooder
 
