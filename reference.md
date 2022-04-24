@@ -2,6 +2,13 @@
 
 Things I do all the time but can never remember.
 
+## listen for tcp connections and print the output, continuously
+
+```
+while true; do ncat -w1 -i0.1 -nlp 1234 ; printf "\n" ; done
+```
+
+
 ## Reset Microsoft Defender Application Guard Edge browser instance
 
 ```
