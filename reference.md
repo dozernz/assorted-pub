@@ -2,6 +2,19 @@
 
 Things I do all the time but can never remember.
 
+## query aws creds 
+
+sts get-session-identity using key from from ENV vars
+```
+AWS_ACCESS_KEY_ID=<ID> AWS_SECRET_ACCESS_KEY=<KEY> aws sts get-caller-identity
+```
+
+with temp session token:
+```
+AWS_ACCESS_KEY_ID=<ID> AWS_SECRET_ACCESS_KEY=<KEY> AWS_SESSION_TOKEN=<SESS_TOK> aws sts get-caller-identity
+```
+
+
 ## listen for tcp connections and print the output, continuously
 
 ```
