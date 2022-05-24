@@ -2,6 +2,23 @@
 
 Things I do all the time but can never remember.
 
+## openssl create pkcs12 from x509
+
+Create with no password at all (not even empty string):
+
+```
+openssl pkcs12 -export -inkey cert.key -in cert.pem -certfile stacked-cachain.pem -keypbe NONE -certpbe NONE -passout pass: -out deviceCert.pfx
+```
+
+`-certfile` is optional, this is a CA chain
+
+Create with empty string password and no CA chain:
+
+```
+openssl pkcs12 -export  -inkey privKey.pem -in cert.pem -passout pass: -out deviceCert.pfx
+```
+
+
 ## query aws creds 
 
 sts get-session-identity using key from from ENV vars
