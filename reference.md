@@ -2,6 +2,12 @@
 
 Things I do all the time but can never remember.
 
+Extract single file in tar to stdout
+
+```
+tar -x -O -f <file.tar> <path/to/file/within> 
+```
+
 ## docker
 
 Run container with custom command
