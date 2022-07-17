@@ -2,6 +2,30 @@
 
 Things I do all the time but can never remember.
 
+## docker
+
+Run container with custom command
+
+`docker run -it <IMAGEID> /bin/sh`
+  
+Save container to tar (with layers)
+
+`docker save <IMAGEID> -o <tarfile-path> `
+
+
+Create a container from image without running it
+
+`docker create <IMAGEID>`
+
+List all containers (include non-running)
+
+`docker ps -a`
+
+Export container filesystem to tar (needs container created from image)
+
+`docker export <CONTAINERID> -o /tmp/upd-fs.tar`
+
+
 ## openssl create pkcs12 from x509
 
 Create with no password at all (not even empty string):
