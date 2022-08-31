@@ -2,6 +2,25 @@
 
 **Things I do all the time but can never remember.**
 
+
+## cli speedtest
+
+Pull a file from Cloudflare, should be close to line rate if POP nearby. Can pull up to around 4800000000 bytes (~4.8G)
+
+```
+time curl "https://speed.cloudflare.com/__down?bytes=2500000000" -o /dev/null
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 2384M    0 2384M    0     0  98.2M      0 --:--:--  0:00:24 --:--:-- 97.5M
+
+real    0m24.280s
+user    0m5.475s
+sys     0m8.632s
+```
+Total = ( bytes / bytes-to-megabits [125000] / real time )
+
+2500000000 / 125000 / 24.280 = 823.723229
+
 ## tar
 
 Extract single file in tar to stdout
