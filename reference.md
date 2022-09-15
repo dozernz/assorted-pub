@@ -2,6 +2,21 @@
 
 **Things I do all the time but can never remember.**
 
+## letsencrypt certificate via DNS (allows wildcard)
+
+non-wildcard:
+
+```
+certbot certonly --manual -d <domain> --agree-tos --register-unsafely-without-email --preferred-challenges dns-01
+```
+
+wildcard:
+
+```
+certbot certonly --manual -d *.<domain> --agree-tos --register-unsafely-without-email --preferred-challenges dns-01
+```
+
+
 ## ftp serveraccept uploads
 
 Used for serving and receiving files from minimal clients that may have no ncat etc, but do have ftp:
