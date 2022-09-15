@@ -2,6 +2,15 @@
 
 **Things I do all the time but can never remember.**
 
+## ftp serveraccept uploads
+
+Used for serving and receiving files from minimal clients that may have no ncat etc, but do have ftp:
+
+```
+cd /tmp/ftp
+python3 -m pyftpdlib -w -p 21
+```
+
 
 ## cli speedtest
 
