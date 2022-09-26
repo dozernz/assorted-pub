@@ -2,6 +2,13 @@
 
 **Things I do all the time but can never remember.**
 
+## Force .NET assembly recompilation
+
+In Admin CMD:
+```
+%windir%\microsoft.net\framework64\v4.0.30319\ngen.exe update /force
+```
+
 ## letsencrypt certificate via DNS (allows wildcard)
 
 non-wildcard:
