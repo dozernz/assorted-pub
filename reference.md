@@ -2,6 +2,29 @@
 
 **Things I do all the time but can never remember.**
 
+## Postgres Stuff
+
+Authenticate over network (not socket) as specific user:
+
+```
+psql -h 127.0.0.1 --password -U <username>  <dbname>
+```
+
+Log all sql queries to log file:
+
+*Edit the `postgres.conf` file*
+```
+log_destination = 'stderr'  
+logging_collector = on
+log_directory = 'pg_log'
+log_filename = 'postgresql-queries.log'
+log_truncate_on_rotation = on
+log_rotation_size = 102400
+log_statement = 'all'
+```
+
+
+
 ## Force .NET assembly recompilation
 
 In Admin CMD:
