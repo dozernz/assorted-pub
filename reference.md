@@ -2,6 +2,25 @@
 
 **Things I do all the time but can never remember.**
 
+## signed <-> unsigned int
+
+Python:
+
+```
+def to_unsigned(bits, x):
+    return x & ((1<<bits)-1)
+
+def to_signed(bits, x):
+    offset = 1<<(bits-1)
+    return to_unsigned(bits, x + offset) - offset
+ 
+>>> to_signed(32,4000000000)
+-294967296
+>>> to_unsigned(32,-294967296)
+4000000000
+>>>
+```
+
 ## Postgres Stuff
 
 Authenticate over network (not socket) as specific user:
