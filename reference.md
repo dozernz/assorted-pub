@@ -2,6 +2,13 @@
 
 **Things I do all the time but can never remember.**
 
+## Ubuntu use local mirror
+
+```
+sed -i 's/archive\./nz.archive./g' /etc/apt/sources.list
+sed -i 's/security\./nz.archive./g' /etc/apt/sources.list
+```
+
 ## signed <-> unsigned int
 
 Python:
