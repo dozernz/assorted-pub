@@ -2,6 +2,20 @@
 
 **Things I do all the time but can never remember.**
 
+## Run some commands in tmux windows
+
+```
+LOOP=8
+tmux new-session -d -s sess1
+tmux set -g remain-on-exit on
+for i in $( seq 1 $LOOP )
+do
+    tmux new-window -t sess1
+    tmux send-keys -t sess1:${i} "sleep ${i}" ENTER
+done
+
+```
+
 ## Ubuntu use local mirror
 
 ```
