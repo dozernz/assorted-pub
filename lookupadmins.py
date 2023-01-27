@@ -2,14 +2,13 @@
 #
 # Title: lookupadmins.py
 # Author: @ropnop
-# I converted to python3 and fixed one issue
+# I converted to python3 and fixed one issue, also added support for kerberos
 # Description: Python script using Impacket to query members of the builtin Administrators group through SAMR
 # Similar in function to Get-NetLocalGroup from Powerview
 # Won't work against Windows 10 Anniversary Edition unless you already have local admin
 # See: http://www.securityweek.com/microsoft-experts-launch-anti-recon-tool-windows-10-server-2016
 #
 # Heavily based on original Impacket example scripts written by @agsolino and available here: https://github.com/CoreSecurity/impacket
-#TODO - add kerberos support?
 
 import sys
 import logging
@@ -24,7 +23,7 @@ from impacket.dcerpc.v5.rpcrt import DCERPCException
 from impacket.smb import SMB_DIALECT
 
 class SAMRQuery:
-    def __init__(self, username='', password='', domain='', port=445, remoteName='', remoteHost=''):
+    def __init__(self, username='', password='', domain='', port=445, remoteName='', remoteHost='', doKerberos=False, dc_ip=None):
         self.__username = username
         self.__password = password
         self.__domain = domain
@@ -34,6 +33,8 @@ class SAMRQuery:
         self.__port = port
         self.__remoteName = remoteName
         self.__remoteHost = remoteHost
+        self.__doKerberos = doKerberos
+        self.__kdcHost = dc_ip
         self.dce = self.getDce()
         self.serverHandle = self.getServerHandle()
 
@@ -48,7 +49,7 @@ class SAMRQuery:
         if hasattr(rpctransport, 'set_credentials'):
             # This method exists only for selected protocol sequences.
             rpctransport.set_credentials(self.__username, self.__password, self.__domain, self.__lmhash, self.__nthash, self.__aesKey)
-        rpctransport.set_kerberos(False, None)
+            rpctransport.set_kerberos(self.__doKerberos, self.__kdcHost)
 
         return rpctransport
 
@@ -98,7 +99,7 @@ class SAMRQuery:
 
 class LSAQuery:
 
-    def __init__(self, username='', password='', domain='', port=445, remoteName='', remoteHost=''):
+    def __init__(self, username='', password='', domain='', port=445, remoteName='', remoteHost='', doKerberos=False, dc_ip=None):
         self.__username = username
         self.__password = password
         self.__domain = domain
@@ -108,6 +109,8 @@ class LSAQuery:
         self.__port = port
         self.__remoteName = remoteName
         self.__remoteHost = remoteHost
+        self.__doKerberos = doKerberos
+        self.__kdcHost = dc_ip
         self.dce = self.getDCE()
         self.policyHandle = self.getPolicyHandle()
 
@@ -119,7 +122,7 @@ class LSAQuery:
         if hasattr(rpctransport, 'set_credentials'):
             # This method exists only for selected protocol sequences.
             rpctransport.set_credentials(self.__username, self.__password, self.__domain, self.__lmhash, self.__nthash, self.__aesKey)
-        rpctransport.set_kerberos(False, None)
+            rpctransport.set_kerberos(self.__doKerberos, self.__kdcHost)
         return rpctransport
 
     def getDCE(self):
@@ -147,6 +150,13 @@ if __name__ == '__main__':
 
     group = parser.add_argument_group('authentication')
     group.add_argument('-no-pass', action='store_true', help='don\'t ask for password')
+    group.add_argument('-k', action="store_true", help='Use Kerberos authentication. Grabs credentials from ccache file '
+                       '(KRB5CCNAME) based on target parameters. If valid credentials cannot be found, it will use the '
+                       'ones specified in the command line')
+    group.add_argument('-dc-ip', action='store',metavar = "ip address",  help='IP Address of the domain controller. If '
+                       'ommited it use the domain part (FQDN) specified in the target parameter')
+
+
 
     if len(sys.argv)==1:
         parser.print_help()
@@ -167,12 +177,12 @@ if __name__ == '__main__':
     if domain is None:
         domain = ''
 
-    if password == '' and username != '' and options.no_pass is False:
+    if password == '' and username != '' and options.no_pass is False and options.k is False:
         from getpass import getpass
         password = getpass("Password:")
 
     print("[+] Connecting to {}".format(remoteName))
-    SAMRObject = SAMRQuery(username=username, password=password, remoteName=remoteName, remoteHost=remoteName)
+    SAMRObject = SAMRQuery(username=username, password=password, domain=domain, remoteName=remoteName, remoteHost=remoteName, doKerberos=options.k, dc_ip=options.dc_ip)
     domains = SAMRObject.getDomains()
     print("[+] Found domains: ")
     for domain in domains:
@@ -191,7 +201,8 @@ if __name__ == '__main__':
     memberSids = SAMRObject.getAliasMembers(domainHandle, domainAliases['Administrators'])
     print("[+] Found {} members: ".format(len(memberSids)))
 
-    LSAObject = LSAQuery(username=username, password=password, remoteName=remoteName, remoteHost=remoteName)
+    # domain='' for builtin?
+    LSAObject = LSAQuery(username=username, password=password, domain='', remoteName=remoteName, remoteHost=remoteName, doKerberos=options.k, dc_ip=options.dc_ip)
     memberNames = LSAObject.lookupSids(memberSids)
     for name in memberNames:
         print("\t{}".format(name))
