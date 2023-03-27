@@ -2,6 +2,14 @@
 
 **Things I do all the time but can never remember.**
 
+## List all non-docker processes on slackware
+
+Same output format as `ps fauxww`, using cgname to exclude docker children
+```
+ps wwfaxo cgname,user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command | egrep -v 'elogind:/docker|containerd|docker' | awk '{ print substr($0, index($0,$2)) }'
+```
+
+
 ## Run some commands in tmux windows
 
 ```
