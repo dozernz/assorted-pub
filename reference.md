@@ -134,13 +134,13 @@ tar -x -O -f <file.tar> <path/to/file/within>
 Compress with multithreaded zstd and custom compression level. T0 is multithread to num cores, -4 is compression level 4 (default is 3)
 
 ```
-tar -I "zstd -T0 -4"  -cvf backup.tar.zst <filename>
+tar -I "zstd -T0 -4"  -cavf backup.tar.zst <filename>
 ```
 
  Exclude some dirs and self
  
  ```
- tar --exclude="/dev" --exclude="/sys" --exclude="/proc" --exclude="/run" --exclude="disk-backup.tar.zst" -cvf disk-backup.tar.zst /
+ tar --exclude="/dev" --exclude="/sys" --exclude="/proc" --exclude="/run" --exclude="disk-backup.tar.zst" -cavf disk-backup.tar.zst /
  ```
 
 ## docker
