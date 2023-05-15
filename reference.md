@@ -382,9 +382,11 @@ A	%C1%81	%E0%81%81	%F0%80%81%81	Latin A useful as a base test case.
 ## Forwarding from one interface to the internet
 ```
 # where eth2 is the device you want forwarded out, and eth0 is the internet attached adapter
-iptables -A FORWARD -i eth2 -o eth0 -j ACCEPT
-iptables -A FORWARD -i eth0 -o eth2 -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PRIVATE=eth2
+PUBLIC=eth0
+iptables -A FORWARD -i ${PRIVATE} -o ${PUBLIC} -j ACCEPT
+iptables -A FORWARD -i ${PUBLIC} -o ${PRIVATE} -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -t nat -A POSTROUTING -o ${PUBLIC} -j MASQUERADE
 sysctl -w net.ipv4.ip_forward=1
 ```
 
