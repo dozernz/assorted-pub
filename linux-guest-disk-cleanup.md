@@ -12,3 +12,9 @@ Can drastically reduce the size taken up on the host by the guests VM disk files
  `zerofree /dev/sda<X>`
  
 3. Compact disk from Settings -> Hard Disk -> Compact
+
+4. If you can't be bothered rebooting into a live FS, use the magic sysrq key to force remount / as ro:
+
+`echo u > /proc/sysrq-trigger`
+
+Then you should be able to zerofree from the running system.
