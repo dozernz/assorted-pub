@@ -2,6 +2,12 @@
 
 **Things I do all the time but can never remember.**
 
+## Parallelise exec in find output
+Echo the command to run from exec, then pipe to xargs
+```
+find . -maxdepth 1 -iname "*.HEIC" -exec echo heif-convert {} jpeg/{}.jpeg \; | xargs -P 4 -I @ bash -c @
+```
+
 ## List all non-docker processes on slackware
 
 Same output format as `ps fauxww`, using cgname to exclude docker children
