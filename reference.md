@@ -2,6 +2,14 @@
 
 **Things I do all the time but can never remember.**
 
+## Generate Python flamegraph
+
+```
+pip install flameprof
+python3 -m cProfile -o prof2.prof script.py
+flameprof --perfdata prof2.prof --format log | ~/FlameGraph/flamegraph.pl --width 2000  > output.svg
+```
+
 ## Parallelise exec in find output
 Echo the command to run from exec, then pipe to xargs
 ```
