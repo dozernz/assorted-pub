@@ -36,3 +36,16 @@ f379a52d745dbd765b4ba1fb3133ed6fad3e7c1b 2020-12-09T12:33:33+09:00
 git reset --hard HEAD
 git clean -fdx
 ```
+
+### Search the entire code history for the first instance of a string:
+
+```
+git --no-pager log -S'stringtofind' --source --all --pretty=tformat:"%H %aI"
+```
+
+e.g.
+
+```
+$ git --no-pager log -S'stringtofind' --source --all --pretty=tformat:"%H %aI" 
+12a6cf569e042c0d6420be3778d7a793460693c4 2023-07-27T07:13:45-07:00
+```
