@@ -281,6 +281,8 @@ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out
 
 ## Dnsmasq-  DHCP only
 
+`sudo dnsmasq -dC <conffile>`
+
 ```
 dhcp-range=192.168.50.100,192.168.50.150,255.255.255.0,12h
 dhcp-option=option:router,192.168.50.1
