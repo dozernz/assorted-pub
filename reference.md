@@ -154,7 +154,7 @@ tar -I "zstd -T0 -4"  -cavf backup.tar.zst <filename>
  Exclude some dirs and self
  
  ```
- tar --exclude="/dev" --exclude="/sys" --exclude="/proc" --exclude="/run" --exclude="disk-backup.tar.zst" -cavf disk-backup.tar.zst /
+ tar --exclude="/dev" --exclude="/sys" --exclude="/proc" --exclude="/run" --exclude="/swapfile" --exclude="/tmp" --exclude="disk-backup.tar.zst" -cavf disk-backup.tar.zst /
  ```
 
 ## docker
