@@ -5,13 +5,7 @@ Regexes for Secrets etc. In grep -E format.
 *`{` followed by `['"',"'"," ",'\n','\r']`*
 
 ```
-ewo
-ew0
-eyc
-eyL
-eyJ
-eyI
-eyA
+(ewo|ew0|eyc|eyL|eyJ|eyI|eyA)
 ```
 
 ### AWS Key ID:
