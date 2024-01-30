@@ -26,7 +26,7 @@ eyA
 * Ref: https://github.com/microsoft/azure-pipelines-agent/blob/264f3a14c11a8e039572ae8d54791ea2ea334a54/src/Microsoft.VisualStudio.Services.Agent/AdditionalMaskingRegexes.CredScan.cs#L35
 
 ```
-[0-9A-Za-z_~\.-]{3}7Q~[0-9A-Za-z_~\.-]{31}|[0-9A-Za-z_~\.-]{3}(8|9)Q~[0-9A-Za-z_~\.-]{34}
+[0-9A-Za-z_~\.-]{3}7Q~[0-9A-Za-z_~\.-]{31}|[0-9A-Za-z_~\.-]{3}8Q~[0-9A-Za-z_~\.-]{34}
 ```
 
 ### UUID4
