@@ -1,5 +1,19 @@
 # Useful Git commands
 
+### Search all git file history for a string
+
+```
+git --no-pager grep -i "stringtofind" $(git rev-list --all)
+```
+
+This also supports the "-C <N>" context flag to print the <N> surrounding lines
+
+Unique matches only:
+
+```
+git --no-pager grep -i -h "stringtofind" $(git rev-list --all) | sort -u
+```
+
 ### List tags and their date:
 
 ```
