@@ -8,6 +8,12 @@ Regexes for Secrets etc. In grep -E format.
 (ewo|ew0|eyc|eyL|eyJ|eyI|eyA)
 ```
 
+Matching the above with a reasonable amount of trailing valid base64. Adjust {5,} for match length:
+
+```
+(ewo|ew0|eyc|eyL|eyJ|eyI|eyA)[A-Za-z0-9+/]{1}([A-Za-z0-9+/]{4}){5,}([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)
+```
+
 ### AWS Key ID:
 
 ```
