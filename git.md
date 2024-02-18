@@ -14,6 +14,14 @@ Unique matches only:
 git --no-pager grep -i -h "stringtofind" $(git rev-list --all) | sort -u
 ```
 
+### Commits newer than a certain date range
+
+One year ago:
+
+```
+git rev-list --since="1 year ago" --all
+```
+
 ### List tags and their date:
 
 ```
