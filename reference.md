@@ -2,7 +2,15 @@
 
 **Things I do all the time but can never remember.**
 
+## Count of all files in dir and subdirs grouped by extension
+
+```
+find . -type f | rev | cut -d '/' -f1 | fgrep '.' | cut -d '.' -f1 | rev | sort | uniq -c | sort -n
+```
+
 ## Generate Python flamegraph
+
+*flamegraph.pl from https://github.com/brendangregg/FlameGraph*
 
 ```
 pip install flameprof
