@@ -36,7 +36,7 @@ Matching the above with a reasonable amount of trailing valid base64. Adjust {5,
 Not generally fruitful to search for but occasionally useful
 
 ```
-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}
+[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
 ```
 
 ### Base64
