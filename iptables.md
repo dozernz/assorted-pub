@@ -1,0 +1,23 @@
+```
+*filter
+:INPUT DROP [562:77066]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -s XXXXXXXXXXXXXXXXXXXXXXXXXXX -p tcp -j ACCEPT
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p udp -m conntrack --ctstate RELATED -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+COMMIT
+
+
+*filter
+:INPUT DROP [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -s XXXXXXXXXXXXXXXXXXXXXXXXXXXX -p tcp -j ACCEPT
+-A INPUT -p udp -m conntrack --ctstate RELATED -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+COMMIT
+****
+```
