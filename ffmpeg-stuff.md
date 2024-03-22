@@ -1,5 +1,19 @@
 # FFmpeg useful commands:
 
+### Add Subtitles
+
+Make a srt file first:
+```
+1
+00:00:00,000 --> 00:00:05,000
+Test sub
+```
+then apply it (requires re-encoding):
+
+```
+ffmpeg -y -i in.mp4 -vf subtitles=1.srt out.mp4
+```
+
 ### Quiet
 ```
 -hide_banner -loglevel error
