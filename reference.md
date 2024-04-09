@@ -2,6 +2,12 @@
 
 **Things I do all the time but can never remember.**
 
+## Crt.sh domain search
+
+```
+select distinct(lower(name_value)) FROM certificate_and_identities cai where 'DOMAIN:*'::tsquery @@ identities(cai.CERTIFICATE) AND lower(cai.NAME_VALUE) LIKE ('%DOMAIN%') AND NOT lower(cai.NAME_VALUE) LIKE('%BLACKLIST%');
+```
+
 ## Count of all files in dir and subdirs grouped by extension
 
 ```
