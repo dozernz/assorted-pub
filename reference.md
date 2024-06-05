@@ -59,6 +59,12 @@ sed -i 's/archive\./nz.archive./g' /etc/apt/sources.list
 sed -i 's/security\./nz.archive./g' /etc/apt/sources.list
 ```
 
+## Ubuntu 24.04 use local mirror
+
+```
+sed -i 's/\(security\|archive\)\.ubuntu/nz\.archive\.ubuntu/g' /etc/apt/sources.list.d/ubuntu.sources 
+```
+
 ## signed <-> unsigned int
 
 Python:
