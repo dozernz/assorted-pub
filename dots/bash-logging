@@ -1,0 +1,8 @@
+export LESS='-IR'
+export HISTSIZE='10000'
+export HISTFILESIZE='20000'
+export PROMPT_COMMAND='history -a'
+
+PS1='[NOLOG] \[\e[31m\]\u@\h\[\e[0m\]:\w/ > '
+SCRIPT_PS1='[`date  +"%d-%b-%y %T"`] \[\033[01;32m\]\u@\h\[\033[00m\]:\w/ > '
+test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/logs/$(date +"%d-%b-%y_%H-%M-%S")_shell.log -c "export PS1='${SCRIPT_PS1}' ; bash --norc")
