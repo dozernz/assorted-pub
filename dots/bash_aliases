@@ -6,27 +6,28 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias upper="tr '[:lower:]' '[:upper:]'"
+alias ,ips='f() { sort -o "$1" "$1"; }; f'
 
 alias 'fnmap'='nmap --resolve-all -T4 -Pn -n -v --osscan-limit --open --top-ports=500 --reason --defeat-rst-ratelimit'
 alias 'allmap'='nmap --resolve-all -T4 -Pn -v -p- --open -sSC --osscan-limit --reason'
 
 
 
-function _fw(){
+function ,fw(){
     #find on whole disk case insensitive with wildcards
     NAME=$1       
     find / -iname "*${NAME}*" 2>/dev/null
 }
 
 
-function _apu() {
+function ,apu() {
     sudo apt update -y
     sudo apt dist-upgrade -y
     sudo apt autoremove -y
     sudo apt clean -y
 }
 
-function _countext() {
+function ,countext() {
     find . -type f | rev | cut -d '/' -f1 | fgrep '.' | cut -d '.' -f1 | rev | sort | uniq -c | sort -n
 }
 
