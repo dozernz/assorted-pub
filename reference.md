@@ -2,6 +2,24 @@
 
 **Things I do all the time but can never remember.**
 
+## rpm / cpio extract
+
+View the pre/post scripts in the rpm:
+
+```
+rpm -qp --scripts file.rpm
+```
+
+Extract the CPIO file from the rpm
+```
+7z x file.rpm
+```
+
+Extract the CPIO file contents without fucking up your filesystem
+```
+cpio -idmv --no-absolute-filenames < file.cpio
+```
+
 ## Crt.sh domain search
 
 ```
