@@ -13,5 +13,3 @@ IM=`echo $REGLESS | sed 's/:.*//g'`
 skopeo copy --quiet docker://$IMG oci:/dev/shm/$IM-oci:$TAG
 umoci raw unpack --rootless --image /dev/shm/$IM-oci:$TAG /dev/shm/$IM-unpack 2>/dev/null
 sudo rm -rf "/dev/shm/$IM-oci"
-mkdwarfs --log-level warn -o $IM@$TAG.dwarfs -i /dev/shm/$IM-unpack -l 5
-sudo rm -rf "/dev/shm/$IM-unpack"
