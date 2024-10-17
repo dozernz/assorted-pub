@@ -11,6 +11,11 @@ alias ,ips='f() { sort -o "$1" "$1"; }; f'
 alias 'fnmap'='nmap --resolve-all -T4 -Pn -n -v --osscan-limit --open --top-ports=500 --reason --defeat-rst-ratelimit'
 alias 'allmap'='nmap --resolve-all -T4 -Pn -v -p- --open -sSC --osscan-limit --reason'
 
+function mqds () {
+    HOST=`echo $1 | sed 's/\/$//g'`
+    echo "~/tools/ffuf -c -u "$HOST/FUZZ"  -w ~/mega.txt -sa -t 20 -mc all -fc 404 ${@:2}"
+    ~/tools/ffuf -c -u "$HOST/FUZZ"  -w ~/mega.txt -sa -t 20 -mc all -fc 404 ${@:2}
+}
 
 
 function ,fw(){
