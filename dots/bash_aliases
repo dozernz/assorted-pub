@@ -8,6 +8,11 @@ alias lower="tr '[:upper:]' '[:lower:]'"
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias ,ips='f() { sort -o "$1" "$1"; }; f'
 
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias 'fnmap'='nmap --resolve-all -T4 -Pn -n -v --osscan-limit --open --top-ports=500 --reason --defeat-rst-ratelimit'
 alias 'allmap'='nmap --resolve-all -T4 -Pn -v -p- --open -sSC --osscan-limit --reason'
 
