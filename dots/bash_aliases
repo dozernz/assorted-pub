@@ -31,10 +31,10 @@ function ,fw(){
 
 
 function ,apu() {
-    sudo apt update -y
-    sudo apt dist-upgrade -y
-    sudo apt autoremove -y
-    sudo apt clean -y
+    DEBIAN_FRONTEND=noninteractive sudo -E apt update -y
+    DEBIAN_FRONTEND=noninteractive sudo -E apt dist-upgrade -y
+    DEBIAN_FRONTEND=noninteractive sudo -E apt autoremove -y
+    DEBIAN_FRONTEND=noninteractive sudo -E apt clean -y
 }
 
 function ,countext() {
